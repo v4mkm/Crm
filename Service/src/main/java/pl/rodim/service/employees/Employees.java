@@ -5,7 +5,10 @@
  */
 package pl.rodim.service.employees;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,12 +17,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/employees")
 public class Employees {
     
-    @RequestMapping(method=RequestMethod.GET)
+    Map<Long , Employee> employees = new HashMap<>();
+
+    public Employees() {
+        employees.put(0L , new Employee(0L, "Damian Midor", Division.HEAD, Position.PRESIDENT, new Date(), new Date()));
+    }
+    
+    @RequestMapping(value = "/employees" , method=RequestMethod.GET)
+    public @ResponseBody Collection<Employee> getEmployee() {
+        return employees.values();
+    }
+    
+    @RequestMapping(value = "/employees/get" ,   method=RequestMethod.GET)
     public @ResponseBody Employee getEmployee(@RequestParam(value="id", required=false, defaultValue="1") Long id) {
-        return new Employee(id, "Damian Midor", Division.HEAD, Position.PRESIDENT, new Date(), new Date());
+        return employees.get(id);
+    }
+    
+    @RequestMapping(value = "/employees/add" ,   method=RequestMethod.POST)
+    public @ResponseBody void add(Employee employee) throws Exception {
+        if(employees.containsKey(employee.getId())){
+            throw new Exception("Juz jest taki ziomek");
+        }
+        employees.put(employee.getId() , employee);
+    }
+    
+    
+    @RequestMapping(value = "/employees/up" ,   method=RequestMethod.POST)
+    public @ResponseBody void update(Employee employee) throws Exception {
+        if(!employees.containsKey(employee.getId())){
+            throw new Exception("Nie ma takiego ziomka");
+        }
+        Employee get = employees.get(employee.getId());
+        get = employee;
     }
     
 }
