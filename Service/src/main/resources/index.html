@@ -22,7 +22,7 @@
                 <tbody>
                     <tr ng-repeat="employee in ctrl.employees">
                         <td>
-                            <button class="btn" ng-click="editUser(employee.id)">
+                            <button class="btn" ng-click="ctrl.editUser(employee.id)">
                                 <span class="glyphicon glyphicon-pencil"></span>  Edit
                             </button>
                         </td>
@@ -33,7 +33,7 @@
             </table>
 
             <hr>
-            <button class="btn btn-success" ng-click="editUser('new')">
+            <button class="btn btn-success" ng-click="ctrl.editUser('new')">
                 <span class="glyphicon glyphicon-user"></span>  Create New User
             </button>
             <hr>
@@ -79,6 +79,7 @@
             var app = angular.module('myApp', []);
 
             app.controller('customersController', function ($scope, $http) {                                
+                this.employees = [];
                 $http.get("http://localhost:9000/employees")
                         .success(function (response) {
                             this.employees = response;
