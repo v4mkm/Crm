@@ -31,7 +31,7 @@ public class Employees {
     }
     
     @RequestMapping(value = "/employees/get" ,   method=RequestMethod.GET)
-    public @ResponseBody Employee getEmployee(@RequestParam(value="id", required=false, defaultValue="1") Long id) {
+    public @ResponseBody Employee get(@RequestParam(value="id", required=false, defaultValue="1") Long id) {
         return employees.get(id);
     }
     
