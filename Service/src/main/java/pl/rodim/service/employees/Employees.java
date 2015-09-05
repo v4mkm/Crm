@@ -22,7 +22,9 @@ public class Employees {
     Map<Long , Employee> employees = new HashMap<>();
 
     public Employees() {
-        employees.put(0L , new Employee(0L, "Damian Midor", Division.HEAD, Position.PRESIDENT, new Date(), new Date()));
+        employees.put(0L , new Employee(0L, "Krzysztof nowak", Division.HEAD, Position.PRESIDENT, new Date(), new Date()));
+        employees.put(1L , new Employee(1L, "Jan Kowalski", Division.SALE, Position.JUNIOR, new Date(), new Date()));
+        employees.put(2L , new Employee(2L, "John Smith", Division.HR, Position.SPECIALIST, new Date(), new Date()));
     }
     
     @RequestMapping(value = "/employees" , method=RequestMethod.GET)
