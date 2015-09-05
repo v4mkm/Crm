@@ -17,17 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author rodim
  */
 @SpringBootApplication
-
 @Controller
-@RequestMapping("/")
 public class StartConfiguration {
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(value = "/" ,  method=RequestMethod.GET)
     public @ResponseBody String sayHello() {
         return "Rodim SERVICE";
     }
-    
-    
+        
     public static void main(String[] args) {
         SpringApplication.run(StartConfiguration.class, args);
     }
