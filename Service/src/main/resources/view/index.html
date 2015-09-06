@@ -5,29 +5,25 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
     <body ng-app="myApp">
-
-
         <div class="container" ng-controller="customersController as ctrl">
-
             <h3>Users</h3>
-
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Edit</th>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="employee in ctrl.employees">
+                        <td>{{ employee.id}}</td>
+                        <td>{{ employee.name}}</td>
                         <td>
                             <button class="btn" ng-click="ctrl.editUser(employee)">
                                 <span class="glyphicon glyphicon-pencil"></span>  Edit
                             </button>
                         </td>
-                        <td>{{ employee.id}}</td>
-                        <td>{{ employee.name}}</td>
                     </tr>
                 </tbody>
             </table>
