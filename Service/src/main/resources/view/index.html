@@ -29,13 +29,13 @@
             </table>
 
             <hr>
-            <button class="btn btn-success" ng-click="ctrl.editUser('new')">
+            <button class="btn btn-success" ng-click="ctrl.newUser()">
                 <span class="glyphicon glyphicon-user"></span>  Create New User
             </button>
             <hr>
 
-            <h3 ng-show="edit">Create New User:</h3>
-            <h3 ng-hide="edit">Edit User:</h3>
+            <h3 ng-show="ctrl.edit">Create New User:</h3>
+            <h3 ng-hide="ctrl.edit">Edit User:</h3>
 
             <form class="form-horizontal">
                 <div class="form-group">
@@ -70,9 +70,5 @@
             </button>
 
         </div>
-
-
-
-
     </body>
 </html> 
