@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Employees {
     
+    private static Long lastPK;
     Map<Long , Employee> employees = new HashMap<>();
 
     public Employees() {
         employees.put(0L , new Employee(0L, "Krzysztof nowak", Division.HEAD, Position.PRESIDENT, new Date(), new Date()));
         employees.put(1L , new Employee(1L, "Jan Kowalski", Division.SALE, Position.JUNIOR, new Date(), new Date()));
         employees.put(2L , new Employee(2L, "John Smith", Division.HR, Position.SPECIALIST, new Date(), new Date()));
+        lastPK = 3L;
     }
     
     @RequestMapping(value = "/employees" , method=RequestMethod.GET)
@@ -38,16 +41,15 @@ public class Employees {
     }
     
     @RequestMapping(value = "/employees/add" ,   method=RequestMethod.POST)
-    public @ResponseBody void add(Employee employee) throws Exception {
-        if(employees.containsKey(employee.getId())){
-            throw new Exception("Juz jest taki ziomek");
-        }
+    public @ResponseBody void add(@RequestBody  Employee employee) throws Exception {
+        employee.setId(lastPK);        
         employees.put(employee.getId() , employee);
+        lastPK++;
     }
     
     
     @RequestMapping(value = "/employees/up" ,   method=RequestMethod.POST)
-    public @ResponseBody void update(Employee employee) throws Exception {
+    public @ResponseBody void update(@RequestBody Employee employee) throws Exception {
         if(!employees.containsKey(employee.getId())){
             throw new Exception("Nie ma takiego ziomka");
         }

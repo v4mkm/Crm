@@ -16,6 +16,9 @@ public class Employee {
     private Date hire;
     private Date fire;
 
+    public Employee() {
+    }
+    
     public Employee(Long id, String name, Division division, Position position, Date hire, Date fire) {
         this.id = id;
         this.name = name;
@@ -72,6 +75,12 @@ public class Employee {
     public void setFire(Date fire) {
         this.fire = fire;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", name=" + name + ", division=" + division + ", position=" + position + ", hire=" + hire + ", fire=" + fire + '}';
+    }
+
     
     
 }
