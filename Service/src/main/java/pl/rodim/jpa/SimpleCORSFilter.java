@@ -1,4 +1,4 @@
-package pl.rodim.service;
+package pl.rodim.jpa;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
