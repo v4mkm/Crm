@@ -91,7 +91,7 @@
                     <generatePackage>hello.wsdl</generatePackage>
                     <schemas>
                         <schema>
-                            <url>http://wsf.cdyne.com/WeatherWS/Weather.asmx?wsdl</url>
+                            <url>https://api.euroticket.pl/ETApi/Sale_v1?wsdl</url>
                         </schema>
                     </schemas>
                 </configuration>
